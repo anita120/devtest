@@ -1,13 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Work Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+/* code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+} */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Work Sans';
+}
+
+.profile {
+  //background-color: #18cd4b;
+  grid-area: profile;
+}
+.bank-account {
+  //background-color: #2418cd;
+  grid-area: bank-account;
+}
+.billing-address {
+  //background-color: #cd1888;
+  grid-area: billing-address;
+}
+.activities {
+  //background-color: #92e4a9;
+  grid-area: activities;
+}
+.family {
+  //background-color: #18a9cd;
+  grid-area: family;
+}
+.invitation {
+  //background-color: #cd18cd;
+  grid-area: invitation;
+}
+.navigation {
+  display: none;
+}
+.container {
+  display: grid;
+  gap: 10px;
+  grid-template-areas:
+    "profile profile profile family"
+    "bank-account bank-account activities family"
+    "billing-address billing-address activities invitation"
+    "billing-address billing-address activities invitation";
+}
+/*.common {
+  min-height: 200px;
+}*/
+@media screen and (min-width: 400px) and (max-width: 768px) {
+  /* body {
+    background-color: red;
+  } */
+  .container {
+    grid-template-areas:
+      "profile profile profile profile profile profile profile family family family family family"
+      "bank-account bank-account bank-account bank-account bank-account bank-account billing-address billing-address billing-address billing-address billing-address billing-address"
+      "activities activities activities activities activities activities invitation invitation invitation invitation invitation invitation";
+
+    /* "bank-account bank-account activities family"
+      "billing-address billing-address activities ixnvitation"
+      "billing-address billing-address activities invitation"; */
+  }
+  /*.common {
+    min-height: 400px;
+  }*/
+}
+@media screen and (max-width: 400px) {
+  /* body {
+    background-color: red;
+  } */
+  .navigation {
+    display: block;
+  }
+  .navigation ul {
+    padding: 0;
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .bank-account,
+  .activities,
+  .invitation {
+    display: none;
+  }
+  .container {
+    grid-template-areas:
+      "family"
+      "profile"
+      "bank-account"
+      "activities"
+      "invitation";
+
+    /* "bank-account bank-account activities family"
+      "billing-address billing-address activities invitation"
+      "billing-address billing-address activities invitation"; */
+  }
+  .billing-address {
+    display: none;
+  }
+ 
+ /* .common {
+    min-height: 400px;
+  }*/
+  .active {
+    border-bottom: 2px solid #FFBF00;
+    padding-bottom: 5px;
+  }
 }
